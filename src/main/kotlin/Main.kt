@@ -1,37 +1,12 @@
 import java.util.Calendar
 
+
 const val MINUTES_IN_MILISECONDS = 60000
 const val MAXIMUN = 20
 
-data class ParkingSpace(var vehicle : Vehicle, val parkedTime : Long){
-    
-
-}
-
-data class Parking(val vehicles : MutableSet<Vehicle>){
-    fun addVehicle(vehicle: Vehicle) : Boolean {
-        println(vehicles.count())
-        return this.vehicles.size <= MAXIMUN
-    }
-}
-
-data class Vehicle(val plate : String, val vehicleType: utils.VehicleType, var checkInTime : Long, val discountCard : String? = null ){
-    override fun equals(other: Any?): Boolean {
-        if (other is Vehicle) {
-            return this.plate == other.plate
-        }
-        return super.equals(other)
-    }
-    override fun hashCode(): Int = this.plate.hashCode()
-}
-
 fun main(){
 
-
-
     //val parkedTime = Calendar.getInstance().timeInMillis - checkInTime / MINUTES_IN_MILISECONDS
-
-
 
     val car = Vehicle(plate = "AA111AA", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
         "DISCOUNT_CARD_001")
@@ -97,23 +72,15 @@ fun main(){
     var contador : Int = 0
     for(vehicleSet in myArray){
        val vehicleParking = Parking(mutableSetOf(vehicleSet))
+
         contador++
         println(contador)
        //println(vehicleSet)
       //  println(vehicleParking.addVehicle(vehicleSet))
         if (vehicleParking.addVehicle(vehicleSet)) println("Welcome to AlkeParking!") else println("Sorry, the check-in failed")
+
     }
-
-
-
-    /*val parking = Parking(mutableSetOf(car,moto,minibus,bus,car2,moto2,minibus2,bus2,car3,moto3,minibus3,bus3,car4,moto4,minibus4,bus4
-        ,car5,moto5,minibus5,bus5,car6))
-
-
-
-
-
-    println(parking.vehicles.count())
+   /*
     //parking.vehicles.add(car)
 
     //parking.vehicles.remove(car)
@@ -122,13 +89,13 @@ fun main(){
 
     //val parking = Parking(mutableSetOf(car,moto,bus,minibus),20)
 
-   /* for(vehicle in parking.vehicles){
+    for(vehicle in parking.vehicles){
         println(parking.vehicles)
         println(parking.vehicles.count())
 
     }
-*/
-    /* parking.vehicles.forEach() {
+
+     parking.vehicles.forEach() {
          val vehicle = parking.vehicles
          println(vehicle)
          if (parking.addVehicle(vehicle)) {
@@ -145,16 +112,16 @@ fun main(){
     println(parking.vehicles.contains(bus))
     println(parking.vehicles.contains(car2))
     println(parking.vehicles.contains(moto2))
-*/
 
-    //val car10 = Vehicle(plate = "AA111AA", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
-    //    "DISCOUNT_CARD_003")
-    //val isCar10Inserted = parking.vehicles.add(car10)
-    //println(isCar10Inserted)
 
-    //println(parking)
+    val car10 = Vehicle(plate = "AA111AA", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
+        "DISCOUNT_CARD_003")
+    val isCar10Inserted = parking.vehicles.add(car10)
+    println(isCar10Inserted)
 
 */
+
+
 
 
 

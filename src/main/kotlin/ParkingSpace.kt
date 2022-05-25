@@ -5,30 +5,40 @@ data class ParkingSpace(var vehicle: Vehicle, var parking: Parking) {
 
     open fun checkOutVehicle(plate : String) {
         if ((vehicle.plate).contains(plate)) {
-            onSuccess(vehicle.vehicleType.fee)
+            var discount = vehicle.discountCard != null  //Revisar con profesor
+            onSuccess(vehicle.vehicleType.fee,discount)
             parking.vehicles.remove(vehicle)
             println("cantidad actual  ${parking.vehicles.size}  ")
-
         } else {
             onError(plate)
         }
     }
 
-    private fun onSuccess(amount : Int){
+    private fun onSuccess(amount : Int,hasDiscountCard : Boolean){
             println("onSucces   $amount")
   //          println("hora vehiculo ${vehicle.checkInTime}")
   //          println("hora actual ${Calendar.getInstance().timeInMillis}")
-            println("resultado $parkedTime")
+
             if (parkedTime <= MAXIMUN){
-                println("Su tiempo fue de $parkedTime minutos, Tu tarifa es $amount dolares por ser un ${vehicle.vehicleType}")
-            }else calculateFee()
+                if(hasDiscountCard) {
+                    val amountDes = amount.times(DESCUENTO).toString()
+                    println("Su tiempo fue de $parkedTime minutos, Tu tarifa es ${amountDes} dolares por ser un ${vehicle.vehicleType}")
+                }else{
+                    println("Su tiempo fue de $parkedTime minutos, Tu tarifa es ${amount} dolares por ser un ${vehicle.vehicleType}")
+                }
+            }else calculateFee(amount,hasDiscountCard)
         }
 
-    private fun calculateFee() {
-        println("en implementacion")
+    private fun calculateFee(amount : Int,hasDiscountCard : Boolean ) {
+        var fee = (Math.ceil((parkedTime - HORAS) /QUINCE.toDouble()) * CINCO).toInt().plus(amount)
+        if(hasDiscountCard) {
+            val amount = Math.ceil(fee.times(DESCUENTO)).toInt()
+            println("Su tiempo fue de $parkedTime minutos, Tu tarifa es $amount dolares por ser un ${vehicle.vehicleType}")
+        }else {
+            println("Su tiempo fue de $parkedTime minutos, Tu tarifa es $fee dolares por ser un ${vehicle.vehicleType}")
+        }
     }
     private fun onError(plate : String){
        println("Sorry, the plate $plate checkout failed ")
   }
-
     }

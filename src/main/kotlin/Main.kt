@@ -2,7 +2,10 @@ import java.util.Calendar
 
 const val MINUTES_IN_MILISECONDS = 60000
 const val MAXIMUN = 20
-
+const val HORAS = 120
+const val QUINCE = 15
+const val CINCO = 5
+const val DESCUENTO = 0.85
 
 fun main(args: Array<String>){
 
@@ -47,14 +50,14 @@ fun main(args: Array<String>){
 
     val bus4 = Vehicle(plate = "DD444D4", vehicleType = utils.VehicleType.BUS,Calendar.getInstance().timeInMillis,
         "DISCOUNT_CARD_002")
-    val car5 = Vehicle(plate = "AA111A5", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
+    val car5 = Vehicle(plate = "AA111A5", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis ,
         "DISCOUNT_CARD_001")
 
     val moto5 = Vehicle(plate = "BB2222B5", vehicleType = utils.VehicleType.MOTOCYCLE,Calendar.getInstance().timeInMillis)
 
     val minibus5 = Vehicle(plate = "CC333C5", vehicleType = utils.VehicleType.MINIBUS,Calendar.getInstance().timeInMillis)
 
-    val bus5 = Vehicle(plate = "DD444D5", vehicleType = utils.VehicleType.BUS,Calendar.getInstance().timeInMillis - 1200000,
+    val bus5 = Vehicle(plate = "DD444D5", vehicleType = utils.VehicleType.BUS,Calendar.getInstance().timeInMillis - 12600000,
         "DISCOUNT_CARD_002")
     val car6 = Vehicle(plate = "AA111A6", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
         "DISCOUNT_CARD_001")

@@ -1,10 +1,10 @@
 import java.util.Calendar
 
-
 const val MINUTES_IN_MILISECONDS = 60000
 const val MAXIMUN = 20
 
-fun main(){
+
+fun main(args: Array<String>){
 
     //val parkedTime = Calendar.getInstance().timeInMillis - checkInTime / MINUTES_IN_MILISECONDS
 
@@ -54,7 +54,7 @@ fun main(){
 
     val minibus5 = Vehicle(plate = "CC333C5", vehicleType = utils.VehicleType.MINIBUS,Calendar.getInstance().timeInMillis)
 
-    val bus5 = Vehicle(plate = "DD444D5", vehicleType = utils.VehicleType.BUS,Calendar.getInstance().timeInMillis,
+    val bus5 = Vehicle(plate = "DD444D5", vehicleType = utils.VehicleType.BUS,Calendar.getInstance().timeInMillis - 1200000,
         "DISCOUNT_CARD_002")
     val car6 = Vehicle(plate = "AA111A6", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
         "DISCOUNT_CARD_001")
@@ -67,45 +67,38 @@ fun main(){
         "DISCOUNT_CARD_002")
 
     val myArray = arrayListOf<Vehicle>(car,moto,minibus,bus,car2,moto2,minibus2,bus2,car3,moto3,minibus3,bus3,car4,moto4,minibus4,bus4
-        ,car5,moto5,minibus5,bus5,car6)
+        ,car5,moto5,minibus5,bus5,car6,moto6,minibus6,bus6)
 
-    var contador : Int = 0
-    for(vehicleSet in myArray){
-       val vehicleParking = Parking(mutableSetOf(vehicleSet))
 
-        contador++
-        println(contador)
-       //println(vehicleSet)
-      //  println(vehicleParking.addVehicle(vehicleSet))
-        if (vehicleParking.addVehicle(vehicleSet)) println("Welcome to AlkeParking!") else println("Sorry, the check-in failed")
-
+    val parking = Parking(mutableSetOf())
+    myArray.forEach { vehicleFor -> parking.addVehicle(vehicleFor)
     }
-   /*
+
+    //Validar con profesor.
+    val parkingSpace = ParkingSpace(bus5,parking).checkOutVehicle("DD444D5")
+
+
+
+
+
+
+
+
+
+
+
+}
+     //   vehicleParking.addVehicle(vehicleSet)
+       // println(vehicleParking.vehicles.contains(vehicleSet))
+        //println(vehicleParking.vehicles.count().plus(1))
+
+
     //parking.vehicles.add(car)
 
     //parking.vehicles.remove(car)
     //println(parking.vehicles.count())
 
-
-    //val parking = Parking(mutableSetOf(car,moto,bus,minibus),20)
-
-    for(vehicle in parking.vehicles){
-        println(parking.vehicles)
-        println(parking.vehicles.count())
-
-    }
-
-     parking.vehicles.forEach() {
-         val vehicle = parking.vehicles
-         println(vehicle)
-         if (parking.addVehicle(vehicle)) {
-             println("Welcome to AlkeParking!")
-         } else {
-             println("Sorry, the check-in failed")
-         }
-     }
-
-
+/*
     println(parking.vehicles.contains(car))
     println(parking.vehicles.contains(moto))
     println(parking.vehicles.contains(minibus))
@@ -125,4 +118,3 @@ fun main(){
 
 
 
-}

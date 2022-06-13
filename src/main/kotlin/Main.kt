@@ -77,45 +77,10 @@ fun main(args: Array<String>){
     myArray.forEach { vehicleFor -> parking.addVehicle(vehicleFor)
     }
 
-    //Validar con profesor.
     val parkingSpace = ParkingSpace(bus5,parking).checkOutVehicle("DD444D5")
 
-
-
-
-
-
-
-
-
-
-
 }
-     //   vehicleParking.addVehicle(vehicleSet)
-       // println(vehicleParking.vehicles.contains(vehicleSet))
-        //println(vehicleParking.vehicles.count().plus(1))
 
-
-    //parking.vehicles.add(car)
-
-    //parking.vehicles.remove(car)
-    //println(parking.vehicles.count())
-
-/*
-    println(parking.vehicles.contains(car))
-    println(parking.vehicles.contains(moto))
-    println(parking.vehicles.contains(minibus))
-    println(parking.vehicles.contains(bus))
-    println(parking.vehicles.contains(car2))
-    println(parking.vehicles.contains(moto2))
-
-
-    val car10 = Vehicle(plate = "AA111AA", vehicleType = utils.VehicleType.CAR,Calendar.getInstance().timeInMillis,
-        "DISCOUNT_CARD_003")
-    val isCar10Inserted = parking.vehicles.add(car10)
-    println(isCar10Inserted)
-
-*/
 
 
 
